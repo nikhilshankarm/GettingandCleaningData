@@ -1,0 +1,72 @@
+Codebook
+---
+author: `r as.character(Sys.info()["user"])` 
+Created on date and Time: `r Sys.time()`
+
+Variable name    | Description
+-----------------|-----------------------------
+subject          | ID the subject who performed the activity.
+activity         | Activity name
+ftdomain       	 | Feature: Time domain signal or frequency domain signal
+ftdevice         | Feature: Measuring instrument - accelerometer or gyroscope
+ftacceltype      | Feature: Acceleration signal - body or gravity
+ftmeasure        | Feature: Mean or Standard Deviation
+ftjerk           | Feature: Jerk signal
+ftmag            | Feature: Magnitude of the signals
+ftaxis           | Feature: 3 - axial signals in the X, Y and Z directions
+mean		     | Feature: Average of each variable for each activity and each subject
+
+***
+
+Key variables in the data table
+----------------------------------------
+
+```{r, echo=FALSE}
+key(datatidy)
+```
+
+***
+
+Summary of variables in Tidy Data
+---------------------------------
+
+```{r,echo=FALSE}
+summary(datatidy)
+```
+
+***
+
+Tidy Data structure
+-----------------
+
+```{r,echo=FALSE}
+str(datatidy)
+```
+
+***
+
+Display a few random rows of the dataset
+------------------------------
+```{r , echo=FALSE}
+set.seed(50)
+```
+Random rows generated : 
+```{r,echo=FALSE}
+ranrow<-sample(1:nrow(datatidy),10)
+ranrow
+```
+```{r,echo=FALSE}
+datatidy[ranrow]
+```
+***
+
+Feature Combinations
+--------------------
+
+```{r,echo=FALSE}
+toprint <-datatidy[, .N, by=c(names(datatidy)[grep("^ft", names(datatidy))])]
+toprint<-as.data.frame(toprint)
+toprint
+```
+
+---

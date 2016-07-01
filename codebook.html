@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Codebook</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h2>Codebook</h2>
+
+<p>author: Nikhil 
+Created on date and Time: 2016-07-02 00:34:28</p>
+
+<table><thead>
+<tr>
+<th>Variable name</th>
+<th>Description</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>subject</td>
+<td>ID the subject who performed the activity.</td>
+</tr>
+<tr>
+<td>activity</td>
+<td>Activity name</td>
+</tr>
+<tr>
+<td>ftdomain</td>
+<td>Feature: Time domain signal or frequency domain signal</td>
+</tr>
+<tr>
+<td>ftdevice</td>
+<td>Feature: Measuring instrument - accelerometer or gyroscope</td>
+</tr>
+<tr>
+<td>ftacceltype</td>
+<td>Feature: Acceleration signal - body or gravity</td>
+</tr>
+<tr>
+<td>ftmeasure</td>
+<td>Feature: Mean or Standard Deviation</td>
+</tr>
+<tr>
+<td>ftjerk</td>
+<td>Feature: Jerk signal</td>
+</tr>
+<tr>
+<td>ftmag</td>
+<td>Feature: Magnitude of the signals</td>
+</tr>
+<tr>
+<td>ftaxis</td>
+<td>Feature: 3 - axial signals in the X, Y and Z directions</td>
+</tr>
+<tr>
+<td>mean</td>
+<td>Feature: Average of each variable for each activity and each subject</td>
+</tr>
+</tbody></table>
+
+<hr/>
+
+<h2>Key variables in the data table</h2>
+
+<pre><code>## [1] &quot;subject&quot;     &quot;activity&quot;    &quot;ftdomain&quot;    &quot;ftacceltype&quot; &quot;ftdevice&quot;   
+## [6] &quot;ftjerk&quot;      &quot;ftmag&quot;       &quot;ftmeasure&quot;   &quot;ftaxis&quot;
+</code></pre>
+
+<hr/>
+
+<h2>Summary of variables in Tidy Data</h2>
+
+<pre><code>##     subject                   activity    ftdomain     ftacceltype  
+##  1      : 396   LAYING            :1980   time:7200   NA     :4680  
+##  2      : 396   SITTING           :1980   freq:4680   body   :5760  
+##  3      : 396   STANDING          :1980               gravity:1440  
+##  4      : 396   WALKING           :1980                             
+##  5      : 396   WALKING_DOWNSTAIRS:1980                             
+##  6      : 396   WALKING_UPSTAIRS  :1980                             
+##  (Other):9504                                                       
+##           ftdevice     ftjerk           ftmag      ftmeasure   ftaxis   
+##  accelerometer:7200   NA  :7200   NA       :8640   mean:5940   NA:3240  
+##  gyroscope    :4680   jerk:4680   magnitude:3240   std :5940   X :2880  
+##                                                                Y :2880  
+##                                                                Z :2880  
+##                                                                         
+##                                                                         
+##                                                                         
+##   mean(value)      
+##  Min.   :-0.99767  
+##  1st Qu.:-0.96205  
+##  Median :-0.46989  
+##  Mean   :-0.48436  
+##  3rd Qu.:-0.07836  
+##  Max.   : 0.97451  
+## 
+</code></pre>
+
+<hr/>
+
+<h2>Tidy Data structure</h2>
+
+<pre><code>## Classes &#39;grouped_dt&#39;, &#39;tbl_dt&#39;, &#39;tbl&#39;, &#39;tbl_dt&#39;, &#39;tbl&#39;, &#39;data.table&#39; and &#39;data.frame&#39;:   11880 obs. of  10 variables:
+##  $ subject    : Factor w/ 30 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ activity   : Factor w/ 6 levels &quot;LAYING&quot;,&quot;SITTING&quot;,..: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ ftdomain   : Factor w/ 2 levels &quot;time&quot;,&quot;freq&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ ftacceltype: Factor w/ 3 levels NA,&quot;body&quot;,&quot;gravity&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ ftdevice   : Factor w/ 2 levels &quot;accelerometer&quot;,..: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ ftjerk     : Factor w/ 2 levels NA,&quot;jerk&quot;: 1 1 1 1 1 1 1 1 2 2 ...
+##  $ ftmag      : Factor w/ 2 levels NA,&quot;magnitude&quot;: 1 1 1 1 1 1 2 2 1 1 ...
+##  $ ftmeasure  : Factor w/ 2 levels &quot;mean&quot;,&quot;std&quot;: 1 1 1 2 2 2 1 2 1 1 ...
+##  $ ftaxis     : Factor w/ 4 levels NA,&quot;X&quot;,&quot;Y&quot;,&quot;Z&quot;: 2 3 4 2 3 4 1 1 2 3 ...
+##  $ mean(value): num  -0.0166 -0.0645 0.1487 -0.8735 -0.9511 ...
+##  - attr(*, &quot;sorted&quot;)= chr  &quot;subject&quot; &quot;activity&quot; &quot;ftdomain&quot; &quot;ftacceltype&quot; ...
+##  - attr(*, &quot;.internal.selfref&quot;)=&lt;externalptr&gt; 
+##  - attr(*, &quot;vars&quot;)=List of 8
+##   ..$ : symbol subject
+##   ..$ : symbol activity
+##   ..$ : symbol ftdomain
+##   ..$ : symbol ftacceltype
+##   ..$ : symbol ftdevice
+##   ..$ : symbol ftjerk
+##   ..$ : symbol ftmag
+##   ..$ : symbol ftmeasure
+</code></pre>
+
+<hr/>
+
+<h2>Display a few random rows of the dataset</h2>
+
+<p>Random rows generated : </p>
+
+<pre><code>##  [1] 8420 5199 2376 9111 6095  531 8311 7675  499 1277
+</code></pre>
+
+<pre><code>## Source: local data table [10 x 10]
+## Groups: 
+## 
+##    subject         activity ftdomain ftacceltype      ftdevice ftjerk
+##     (fctr)           (fctr)   (fctr)      (fctr)        (fctr) (fctr)
+## 1       22          SITTING     time     gravity accelerometer     NA
+## 2       14           LAYING     freq        body accelerometer     NA
+## 3        6 WALKING_UPSTAIRS     freq        body accelerometer   jerk
+## 4       24           LAYING     time          NA     gyroscope     NA
+## 5       16         STANDING     time        body accelerometer     NA
+## 6        2         STANDING     time          NA     gyroscope     NA
+## 7       21 WALKING_UPSTAIRS     freq        body accelerometer   jerk
+## 8       20         STANDING     time        body accelerometer     NA
+## 9        2          SITTING     time     gravity accelerometer     NA
+## 10       4          SITTING     time        body accelerometer     NA
+## Variables not shown: ftmag (fctr), ftmeasure (fctr), ftaxis (fctr),
+##   mean(value) (dbl)
+</code></pre>
+
+<hr/>
+
+<h2>Feature Combinations</h2>
+
+<pre><code>##    ftdomain ftacceltype      ftdevice ftjerk     ftmag ftmeasure ftaxis
+## 1      time        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;      mean      X
+## 2      time        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;      mean      Y
+## 3      time        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;      mean      Z
+## 4      time        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;       std      X
+## 5      time        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;       std      Y
+## 6      time        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;       std      Z
+## 7      time        &lt;NA&gt;     gyroscope   &lt;NA&gt; magnitude      mean   &lt;NA&gt;
+## 8      time        &lt;NA&gt;     gyroscope   &lt;NA&gt; magnitude       std   &lt;NA&gt;
+## 9      time        &lt;NA&gt;     gyroscope   jerk      &lt;NA&gt;      mean      X
+## 10     time        &lt;NA&gt;     gyroscope   jerk      &lt;NA&gt;      mean      Y
+## 11     time        &lt;NA&gt;     gyroscope   jerk      &lt;NA&gt;      mean      Z
+## 12     time        &lt;NA&gt;     gyroscope   jerk      &lt;NA&gt;       std      X
+## 13     time        &lt;NA&gt;     gyroscope   jerk      &lt;NA&gt;       std      Y
+## 14     time        &lt;NA&gt;     gyroscope   jerk      &lt;NA&gt;       std      Z
+## 15     time        &lt;NA&gt;     gyroscope   jerk magnitude      mean   &lt;NA&gt;
+## 16     time        &lt;NA&gt;     gyroscope   jerk magnitude       std   &lt;NA&gt;
+## 17     time        body accelerometer   &lt;NA&gt;      &lt;NA&gt;      mean      X
+## 18     time        body accelerometer   &lt;NA&gt;      &lt;NA&gt;      mean      Y
+## 19     time        body accelerometer   &lt;NA&gt;      &lt;NA&gt;      mean      Z
+## 20     time        body accelerometer   &lt;NA&gt;      &lt;NA&gt;       std      X
+## 21     time        body accelerometer   &lt;NA&gt;      &lt;NA&gt;       std      Y
+## 22     time        body accelerometer   &lt;NA&gt;      &lt;NA&gt;       std      Z
+## 23     time        body accelerometer   &lt;NA&gt; magnitude      mean   &lt;NA&gt;
+## 24     time        body accelerometer   &lt;NA&gt; magnitude       std   &lt;NA&gt;
+## 25     time        body accelerometer   jerk      &lt;NA&gt;      mean      X
+## 26     time        body accelerometer   jerk      &lt;NA&gt;      mean      Y
+## 27     time        body accelerometer   jerk      &lt;NA&gt;      mean      Z
+## 28     time        body accelerometer   jerk      &lt;NA&gt;       std      X
+## 29     time        body accelerometer   jerk      &lt;NA&gt;       std      Y
+## 30     time        body accelerometer   jerk      &lt;NA&gt;       std      Z
+## 31     time        body accelerometer   jerk magnitude      mean   &lt;NA&gt;
+## 32     time        body accelerometer   jerk magnitude       std   &lt;NA&gt;
+## 33     time     gravity accelerometer   &lt;NA&gt;      &lt;NA&gt;      mean      X
+## 34     time     gravity accelerometer   &lt;NA&gt;      &lt;NA&gt;      mean      Y
+## 35     time     gravity accelerometer   &lt;NA&gt;      &lt;NA&gt;      mean      Z
+## 36     time     gravity accelerometer   &lt;NA&gt;      &lt;NA&gt;       std      X
+## 37     time     gravity accelerometer   &lt;NA&gt;      &lt;NA&gt;       std      Y
+## 38     time     gravity accelerometer   &lt;NA&gt;      &lt;NA&gt;       std      Z
+## 39     time     gravity accelerometer   &lt;NA&gt; magnitude      mean   &lt;NA&gt;
+## 40     time     gravity accelerometer   &lt;NA&gt; magnitude       std   &lt;NA&gt;
+## 41     freq        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;      mean      X
+## 42     freq        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;      mean      Y
+## 43     freq        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;      mean      Z
+## 44     freq        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;       std      X
+## 45     freq        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;       std      Y
+## 46     freq        &lt;NA&gt;     gyroscope   &lt;NA&gt;      &lt;NA&gt;       std      Z
+## 47     freq        &lt;NA&gt;     gyroscope   &lt;NA&gt; magnitude      mean   &lt;NA&gt;
+## 48     freq        &lt;NA&gt;     gyroscope   &lt;NA&gt; magnitude       std   &lt;NA&gt;
+## 49     freq        &lt;NA&gt;     gyroscope   jerk magnitude      mean   &lt;NA&gt;
+## 50     freq        &lt;NA&gt;     gyroscope   jerk magnitude       std   &lt;NA&gt;
+## 51     freq        body accelerometer   &lt;NA&gt;      &lt;NA&gt;      mean      X
+## 52     freq        body accelerometer   &lt;NA&gt;      &lt;NA&gt;      mean      Y
+## 53     freq        body accelerometer   &lt;NA&gt;      &lt;NA&gt;      mean      Z
+## 54     freq        body accelerometer   &lt;NA&gt;      &lt;NA&gt;       std      X
+## 55     freq        body accelerometer   &lt;NA&gt;      &lt;NA&gt;       std      Y
+## 56     freq        body accelerometer   &lt;NA&gt;      &lt;NA&gt;       std      Z
+## 57     freq        body accelerometer   &lt;NA&gt; magnitude      mean   &lt;NA&gt;
+## 58     freq        body accelerometer   &lt;NA&gt; magnitude       std   &lt;NA&gt;
+## 59     freq        body accelerometer   jerk      &lt;NA&gt;      mean      X
+## 60     freq        body accelerometer   jerk      &lt;NA&gt;      mean      Y
+## 61     freq        body accelerometer   jerk      &lt;NA&gt;      mean      Z
+## 62     freq        body accelerometer   jerk      &lt;NA&gt;       std      X
+## 63     freq        body accelerometer   jerk      &lt;NA&gt;       std      Y
+## 64     freq        body accelerometer   jerk      &lt;NA&gt;       std      Z
+## 65     freq        body accelerometer   jerk magnitude      mean   &lt;NA&gt;
+## 66     freq        body accelerometer   jerk magnitude       std   &lt;NA&gt;
+##      N
+## 1  180
+## 2  180
+## 3  180
+## 4  180
+## 5  180
+## 6  180
+## 7  180
+## 8  180
+## 9  180
+## 10 180
+## 11 180
+## 12 180
+## 13 180
+## 14 180
+## 15 180
+## 16 180
+## 17 180
+## 18 180
+## 19 180
+## 20 180
+## 21 180
+## 22 180
+## 23 180
+## 24 180
+## 25 180
+## 26 180
+## 27 180
+## 28 180
+## 29 180
+## 30 180
+## 31 180
+## 32 180
+## 33 180
+## 34 180
+## 35 180
+## 36 180
+## 37 180
+## 38 180
+## 39 180
+## 40 180
+## 41 180
+## 42 180
+## 43 180
+## 44 180
+## 45 180
+## 46 180
+## 47 180
+## 48 180
+## 49 180
+## 50 180
+## 51 180
+## 52 180
+## 53 180
+## 54 180
+## 55 180
+## 56 180
+## 57 180
+## 58 180
+## 59 180
+## 60 180
+## 61 180
+## 62 180
+## 63 180
+## 64 180
+## 65 180
+## 66 180
+</code></pre>
+
+<hr/>
+
+</body>
+
+</html>
