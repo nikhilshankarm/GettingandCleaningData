@@ -35,6 +35,7 @@ markdownToHTML('codebook.md', 'codebook.html') # creates html file
 
 #'Save Tidy Data as CSV file 
 write.csv(datatidy, file = "independent_tidy_dataset.csv")
+write.table(datatidy, file = "independent_tidy_dataset.txt",row.name=FALSE)
 
 browseURL(paste(file.path(getwd(),'analysis_results.html')))
 browseURL(paste(file.path(getwd(),'codebook.html')))
