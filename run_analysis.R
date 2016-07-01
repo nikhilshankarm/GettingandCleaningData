@@ -25,7 +25,10 @@ if(file.exists("UCI HAR Dataset")) {
 rpack<-c("dplyr","data.table", "reshape2", "rmarkdown","knitr","markdown")
 invisible(sapply(rpack, library ,character.only=TRUE))
 
-#' Run Data cleaning script, Output Results in html and Create a codebook
+
+#' Run Data cleaning script, Output Results in html and Create a codebook 
+#'(Caution - Needs R-studio installed to run without error)
+Sys.setenv(RSTUDIO_PANDOC="C:/Program Files/RStudio/bin/pandoc") #Pandoc error workaround.
 rmarkdown::render("datacleaner_script.R",output_file="analysis_results.html",html_document())# creates md file and knits to html
 knitr::knit('codebook_generator.rmd', 'codebook.md',encoding="ISO8859-1") # creates md file
 markdownToHTML('codebook.md', 'codebook.html') # creates html file
@@ -35,4 +38,6 @@ write.csv(datatidy, file = "independent_tidy_dataset.csv")
 
 browseURL(paste(file.path(getwd(),'analysis_results.html')))
 browseURL(paste(file.path(getwd(),'codebook.html')))
+
+
 
